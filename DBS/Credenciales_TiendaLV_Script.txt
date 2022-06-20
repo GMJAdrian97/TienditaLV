@@ -1,0 +1,75 @@
+tiendatlv
+Tienda_L-V/#55
+
+
+CREATE TABLE marca(id_marca int PRIMARY KEY NOT NULL,
+                   nombre varchar(50),
+                   imagen varchar(100));
+                   
+CREATE TABLE categoria(id_categoria int PRIMARY KEY NOT NULL,
+                       nombre varchar(50));
+                   
+CREATE TABLE proveedor(id_proveedor int PRIMARY KEY NOT NULL,
+                       nombre varchar(50),
+                       imagen varchar(100),
+                       decripcion varchar(50),
+                       telefono int,
+                       direccion varchar(50));
+                   
+CREATE TABLE porducto(id_producto int PRIMARY KEY NOT NULL,
+                      nombre varchar(50),
+                      imagen varchar(100),
+                      medida varchar(20),
+                      precio float,
+                      stock int,
+                      costo float,
+                      descripcion varchar(100),
+                      id_marca int,
+                      id_categoria int,
+                      id_proveedor int, 
+                      CONSTRAINT FK_marca FOREIGN KEY(id_marca) REFERENCES marca(id_marca),
+                      CONSTRAINT FK_categoria FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria),
+                      CONSTRAINT FK_proveedor FOREIGN KEY(id_proveedor) REFERENCES proveedor(id_proveedor));
+                      
+CREATE TABLE rol(id_rol int PRIMARY KEY NOT NULL,
+                 nombre varchar(50));
+                 
+CREATE TABLE usuario(id_usuario int PRIMARY KEY NOT NULL,
+                 	 correo varchar(50),
+                     pass varchar(32),
+                     token varchar(100));
+
+CREATE TABLE usuario_rol(id_rol int,
+                 	       id_usuario int,
+                         CONSTRAINT FK_id_roll FOREIGN KEY(id_rol) REFERENCES rol(id_rol),
+                         CONSTRAINT FK_usuario FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario),
+                         CONSTRAINT PK_usuario_rol PRIMARY KEY(id_rol,id_usuario));
+
+
+CREATE TABLE ventas(id_venta int PRIMARY KEY NOT NULL,
+                 	  fecha date,
+                    id_usuario int,
+                    CONSTRAINT FK_usuario2 FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));
+
+
+CREATE TABLE detalle_venta(id_venta int,
+                 	         id_producto int,
+				   cantidad float,
+				   total float,
+                           CONSTRAINT FK_venta FOREIGN KEY(id_venta) REFERENCES ventas(id_venta),
+                           CONSTRAINT FK_producto FOREIGN KEY(id_producto) REFERENCES porducto(id_producto),
+                           CONSTRAINT PK_detalle_venta PRIMARY KEY(id_venta,id_producto));
+
+      
+CREATE TABLE compra_provee(id_compra_provee int PRIMARY KEY NOT NULL,
+                 	         fecha date,
+                           id_usuario int,
+                           CONSTRAINT FK_usuario3 FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));
+
+CREATE TABLE detalle_compra_provee(id_proveedor int,
+                 	                 id_compra_provee int,
+				           descripcion varchar(500),
+				           total_pago float,
+                                   CONSTRAINT FK_id_proveedor3 FOREIGN KEY(id_proveedor) REFERENCES proveedor(id_proveedor),
+                                   CONSTRAINT FK_id_compra_provee1 FOREIGN KEY(id_compra_provee) REFERENCES compra_provee(id_compra_provee),
+                                   CONSTRAINT PK_detalle_compra_provee PRIMARY KEY(id_proveedor,id_compra_provee));
