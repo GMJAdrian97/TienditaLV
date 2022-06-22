@@ -2,21 +2,21 @@ tiendatlv
 Tienda_L-V/#55
 
 
-CREATE TABLE marca(id_marca int PRIMARY KEY NOT NULL,
+CREATE TABLE marca(id_marca int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                    nombre varchar(50),
                    imagen varchar(100));
                    
-CREATE TABLE categoria(id_categoria int PRIMARY KEY NOT NULL,
+CREATE TABLE categoria(id_categoria int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                        nombre varchar(50));
                    
-CREATE TABLE proveedor(id_proveedor int PRIMARY KEY NOT NULL,
+CREATE TABLE proveedor(id_proveedor int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                        nombre varchar(50),
                        imagen varchar(100),
                        decripcion varchar(50),
                        telefono int,
                        direccion varchar(50));
                    
-CREATE TABLE porducto(id_producto int PRIMARY KEY NOT NULL,
+CREATE TABLE porducto(id_producto int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                       nombre varchar(50),
                       imagen varchar(100),
                       medida varchar(20),
@@ -31,10 +31,10 @@ CREATE TABLE porducto(id_producto int PRIMARY KEY NOT NULL,
                       CONSTRAINT FK_categoria FOREIGN KEY(id_categoria) REFERENCES categoria(id_categoria),
                       CONSTRAINT FK_proveedor FOREIGN KEY(id_proveedor) REFERENCES proveedor(id_proveedor));
                       
-CREATE TABLE rol(id_rol int PRIMARY KEY NOT NULL,
+CREATE TABLE rol(id_rol int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                  nombre varchar(50));
                  
-CREATE TABLE usuario(id_usuario int PRIMARY KEY NOT NULL,
+CREATE TABLE usuario(id_usuario int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                  	 correo varchar(50),
                      pass varchar(32),
                      token varchar(100));
@@ -46,7 +46,7 @@ CREATE TABLE usuario_rol(id_rol int,
                          CONSTRAINT PK_usuario_rol PRIMARY KEY(id_rol,id_usuario));
 
 
-CREATE TABLE ventas(id_venta int PRIMARY KEY NOT NULL,
+CREATE TABLE ventas(id_venta int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                  	  fecha date,
                     id_usuario int,
                     CONSTRAINT FK_usuario2 FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));
@@ -61,7 +61,7 @@ CREATE TABLE detalle_venta(id_venta int,
                            CONSTRAINT PK_detalle_venta PRIMARY KEY(id_venta,id_producto));
 
       
-CREATE TABLE compra_provee(id_compra_provee int PRIMARY KEY NOT NULL,
+CREATE TABLE compra_provee(id_compra_provee int PRIMARY KEY NOT NULL AUTO_INCREMENT,
                  	         fecha date,
                            id_usuario int,
                            CONSTRAINT FK_usuario3 FOREIGN KEY(id_usuario) REFERENCES usuario(id_usuario));

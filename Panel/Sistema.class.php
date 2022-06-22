@@ -5,9 +5,9 @@ session_start();
         public function connect(){
             $dbDriver = "mysql";
             $dbHost = "localhost";
-            $dbUser = "tiendatlv";
-            $dbPass = "Tienda_L-V/#55";
-            $db = "tiendatlv";
+            $dbUser = "tienda";
+            $dbPass = "123";
+            $db = "tienda";
             /*$this->con = new mysqli($dbHost,$dbUser,$dbPass,$db);*/
             $this->con = new PDO($dbDriver.':host='.$dbHost.';dbname='.$db, $dbUser, $dbPass);
         }
@@ -176,6 +176,26 @@ session_start();
             }
             return false;
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
     $sistema = new Sistema();

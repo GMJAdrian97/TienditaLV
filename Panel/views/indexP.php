@@ -1,5 +1,5 @@
 <?php
-    include("./Componentes/header.php")
+    include("../../Componentes/header.php")
 ?>
 
 
@@ -16,21 +16,21 @@
     </div>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="./Images/C1.jpg" class="d-block w-100" alt="...">
+            <img src="../../Images/C1.jpg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>First slide label</h5>
                 <p>Some representative placeholder content for the first slide.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./Images/C2.jfif" class="d-block w-100" alt="...">
+            <img src="../../Images/C2.jfif" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Second slide label</h5>
                 <p>Some representative placeholder content for the second slide.</p>
             </div>
         </div>
         <div class="carousel-item">
-            <img src="./Images/C3.jfif" class="d-block w-100" alt="...">
+            <img src="../../Images/C3.jfif" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
                 <h5>Third slide label</h5>
                 <p>Some representative placeholder content for the third slide.</p>
@@ -48,8 +48,29 @@
 </div>
 
 <!-- Carrucel -->
+<!-- prodcutos en cards -->
+<div class="container">
+    <div class="shop-card">
+        <div class="title">
+            Nike Metcon 2
+        </div>
+        <div class="desc">
+            Men's training shoe
+        </div>
+        <div class="slider">
+            <figure id="fig" data-color="#E24938, #A30F22">
+                <img src="http://www.supah.it/dribbble/012/1.jpg"/>
+            </figure>
+        </div>
 
+        <div class="cta">
+            <div class="price">$130</div>
+            <button id="btnCompra" class="btn">Add to cart<span class="bg"></span></button>
+        </div>
+    </div>
+    
+</div>
 
 <?php
-    include("./Componentes/footer.php")
+    include("../../Componentes/footer.php")
 ?>
