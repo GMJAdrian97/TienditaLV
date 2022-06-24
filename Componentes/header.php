@@ -23,7 +23,7 @@
                     <div class="col">
                         <div class="container-fluid">
                             <a class="navbar-brand" href="#">
-                                <img src="/TienditaLV/Images/logo1.png" alt="logo" width="80" height="80"
+                                <img src="/TienditaLV/Images/logoC.png" alt="logo" width="100" height="120"
                                     class="d-inline-block align-text-top">
                             </a>
                         </div>

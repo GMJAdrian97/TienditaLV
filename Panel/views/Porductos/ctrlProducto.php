@@ -1,0 +1,9 @@
+<?php
+    require_once('mdlProducto.php');
+
+    $accion = NULL;
+    if(isset($_GET['accion'])){
+        $id_producto = isset($_GET['id_producto']) ? $_GET['id_producto'] : NULL;
+        $accion = $_GET['accion'];
+    }
+?>

@@ -1,5 +1,7 @@
 <?php
-    include("../../Componentes/header.php")
+    include("../../Componentes/header.php");
+    require_once('./Porductos/mdlProducto.php');
+    $datosProducto = $producto -> read();
 ?>
 
 
@@ -48,27 +50,30 @@
 </div>
 
 <!-- Carrucel -->
-<!-- prodcutos en cards -->
-<div class="container">
-    <div class="shop-card">
-        <div class="title">
-            Nike Metcon 2
-        </div>
-        <div class="desc">
-            Men's training shoe
-        </div>
-        <div class="slider">
-            <figure id="fig" data-color="#E24938, #A30F22">
-                <img src="http://www.supah.it/dribbble/012/1.jpg"/>
-            </figure>
-        </div>
 
-        <div class="cta">
-            <div class="price">$130</div>
-            <button id="btnCompra" class="btn">Add to cart<span class="bg"></span></button>
+<!-- prodcutos en cards -->
+
+<div class="container-flex">
+    <?php foreach ($datosProducto as $key => $producto): ?>
+        <div class="shop-card" style="margin-right: 20px" >
+            <div class="title">
+                <?php echo $producto['nombre']?>
+            </div>
+            <div class="desc">
+            <?php echo $producto['descripcion']?>
+            </div>
+            <div class="slider">
+                <figure id="fig" data-color="#E24938, #A30F22">
+                    <img src="http://www.supah.it/dribbble/012/1.jpg" />
+                </figure>
+            </div>
+
+            <div class="cta">
+                <div class="price">$<?php echo $producto['precio']?></div>
+                <button id="btnCompra" class="btn">Add to cart<span class="bg"></span></button>
+            </div>
         </div>
-    </div>
-    
+    <?php endforeach; ?>
 </div>
 
 <?php

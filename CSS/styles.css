@@ -67,3 +67,12 @@ Shop Card
     overflow: hidden;
 
   }
+
+  .container-flex{
+    display: flex;
+    margin: 130px;
+  }
+
+  
+
+
