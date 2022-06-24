@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2022 a las 01:18:47
+-- Tiempo de generación: 24-06-2022 a las 02:21:52
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -85,10 +85,10 @@ CREATE TABLE `marca` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `porducto`
+-- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `porducto` (
+CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `imagen` varchar(100) DEFAULT NULL,
@@ -97,6 +97,7 @@ CREATE TABLE `porducto` (
   `stock` int(11) DEFAULT NULL,
   `costo` float DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
+  `qr` varchar(100) NOT NULL,
   `id_marca` int(11) DEFAULT NULL,
   `id_categoria` int(11) DEFAULT NULL,
   `id_proveedor` int(11) DEFAULT NULL
@@ -202,9 +203,9 @@ ALTER TABLE `marca`
   ADD PRIMARY KEY (`id_marca`);
 
 --
--- Indices de la tabla `porducto`
+-- Indices de la tabla `producto`
 --
-ALTER TABLE `porducto`
+ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `FK_marca` (`id_marca`),
   ADD KEY `FK_categoria` (`id_categoria`),
@@ -265,9 +266,9 @@ ALTER TABLE `marca`
   MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `porducto`
+-- AUTO_INCREMENT de la tabla `producto`
 --
-ALTER TABLE `porducto`
+ALTER TABLE `producto`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -315,13 +316,13 @@ ALTER TABLE `detalle_compra_provee`
 -- Filtros para la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  ADD CONSTRAINT `FK_producto` FOREIGN KEY (`id_producto`) REFERENCES `porducto` (`id_producto`),
+  ADD CONSTRAINT `FK_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
   ADD CONSTRAINT `FK_venta` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id_venta`);
 
 --
--- Filtros para la tabla `porducto`
+-- Filtros para la tabla `producto`
 --
-ALTER TABLE `porducto`
+ALTER TABLE `producto`
   ADD CONSTRAINT `FK_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`),
   ADD CONSTRAINT `FK_marca` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`),
   ADD CONSTRAINT `FK_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`);

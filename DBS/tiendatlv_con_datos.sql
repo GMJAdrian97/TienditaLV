@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2022 a las 01:18:09
+-- Tiempo de generación: 24-06-2022 a las 02:22:19
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -37,9 +37,7 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'bebidas'),
-(2, 'Lacteos'),
-(3, 'chucherias');
+(1, 'Refresco');
 
 -- --------------------------------------------------------
 
@@ -96,15 +94,15 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`id_marca`, `nombre`, `imagen`) VALUES
-(1, 'Coca-cola', 'coca.jpg');
+(1, 'Coca-Cola', 'cocalogo.png');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `porducto`
+-- Estructura de tabla para la tabla `producto`
 --
 
-CREATE TABLE `porducto` (
+CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `imagen` varchar(100) DEFAULT NULL,
@@ -113,18 +111,19 @@ CREATE TABLE `porducto` (
   `stock` int(11) DEFAULT NULL,
   `costo` float DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
+  `qr` varchar(100) NOT NULL,
   `id_marca` int(11) DEFAULT NULL,
   `id_categoria` int(11) DEFAULT NULL,
   `id_proveedor` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `porducto`
+-- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `porducto` (`id_producto`, `nombre`, `imagen`, `medida`, `precio`, `stock`, `costo`, `descripcion`, `id_marca`, `id_categoria`, `id_proveedor`) VALUES
-(1, 'coca-cola 600ml', 'coca6ml.png', '600ml', 15, 24, 14.5, 'refresco sabor cola de 600 ml', 1, 1, 1),
-(2, 'Sidral Mundet fresa-kiwi 2L', 'fresa-kiwi.png', '2L', 27, 10, 25, 'Refresco mundet de sabor fresa con kiwi de 2L', 1, 1, 1);
+INSERT INTO `producto` (`id_producto`, `nombre`, `imagen`, `medida`, `precio`, `stock`, `costo`, `descripcion`, `qr`, `id_marca`, `id_categoria`, `id_proveedor`) VALUES
+(1, 'Coca-Cola', 'coca.jpg', '600ml', 16, 20, 14.5, 'Refresco sabor cola de 600ml', 'qrcoca.jpg', 1, 1, 1),
+(2, 'Sidral Mundet sabor Fresa-Kiwi', 'SMFK.jpg', '2L', 25, 10, 22.5, 'Sidral de 2L sabor fresa con Kiwi', 'qrSMFK.jpg', 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -146,7 +145,7 @@ CREATE TABLE `proveedor` (
 --
 
 INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `imagen`, `decripcion`, `telefono`, `direccion`) VALUES
-(1, 'Coca-cola', 'coca-cola.jpg', 'refresquera gigante', 1800112112, 'mexico');
+(1, 'Coca-Cola', 'cocalogo.png', 'Surtidor de la coca-cola', 18003223, 'Mexico');
 
 -- --------------------------------------------------------
 
@@ -233,9 +232,9 @@ ALTER TABLE `marca`
   ADD PRIMARY KEY (`id_marca`);
 
 --
--- Indices de la tabla `porducto`
+-- Indices de la tabla `producto`
 --
-ALTER TABLE `porducto`
+ALTER TABLE `producto`
   ADD PRIMARY KEY (`id_producto`),
   ADD KEY `FK_marca` (`id_marca`),
   ADD KEY `FK_categoria` (`id_categoria`),
@@ -281,7 +280,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `compra_provee`
@@ -296,9 +295,9 @@ ALTER TABLE `marca`
   MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT de la tabla `porducto`
+-- AUTO_INCREMENT de la tabla `producto`
 --
-ALTER TABLE `porducto`
+ALTER TABLE `producto`
   MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -346,13 +345,13 @@ ALTER TABLE `detalle_compra_provee`
 -- Filtros para la tabla `detalle_venta`
 --
 ALTER TABLE `detalle_venta`
-  ADD CONSTRAINT `FK_producto` FOREIGN KEY (`id_producto`) REFERENCES `porducto` (`id_producto`),
+  ADD CONSTRAINT `FK_producto` FOREIGN KEY (`id_producto`) REFERENCES `producto` (`id_producto`),
   ADD CONSTRAINT `FK_venta` FOREIGN KEY (`id_venta`) REFERENCES `ventas` (`id_venta`);
 
 --
--- Filtros para la tabla `porducto`
+-- Filtros para la tabla `producto`
 --
-ALTER TABLE `porducto`
+ALTER TABLE `producto`
   ADD CONSTRAINT `FK_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id_categoria`),
   ADD CONSTRAINT `FK_marca` FOREIGN KEY (`id_marca`) REFERENCES `marca` (`id_marca`),
   ADD CONSTRAINT `FK_proveedor` FOREIGN KEY (`id_proveedor`) REFERENCES `proveedor` (`id_proveedor`);
