@@ -70,7 +70,9 @@ Shop Card
 
   .container-flex{
     display: flex;
-    margin: 130px;
+    flex-wrap: wrap;
+    gap:20px;
+    justify-content: center;
   }
 
   

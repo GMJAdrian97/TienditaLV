@@ -1,5 +1,5 @@
 <?php
-    require_once('../sistema.php');
+    require_once('../../sistema.php');
 
     class Producto extends sistema{
         public $id_producto;
@@ -8,7 +8,7 @@
         public $medida;
         public $precio;
         public $stock;
-        public $costo ;
+        public $costo;
         public $descripcion;
         public $qr;
         public $id_marca;

@@ -55,7 +55,7 @@
 
 <div class="container-flex">
     <?php foreach ($datosProducto as $key => $producto): ?>
-        <div class="shop-card" style="margin-right: 20px" >
+        <div class="shop-card" >
             <div class="title">
                 <?php echo $producto['nombre']?>
             </div>
