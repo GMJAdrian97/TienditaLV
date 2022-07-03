@@ -26,13 +26,13 @@ svg {
   width: 44px;
 }
 svg path {
-  fill: rgb(20, 19, 19);
+  fill: rgb(0, 0, 0);
 }
 ol {
   list-style-type: none;
 }
 a[href] {
-  color: #fff;
+  color: rgb(0, 0, 0);
   position: relative;
   text-decoration: none;
 }
@@ -87,7 +87,7 @@ a[href]:after {
   position: fixed;
 }
 .menu__toggle:checked ~ .menu__toggle-label {
-  background: rgba(0, 0, 0, 0.63);
+  background: rgba(255, 255, 255, 0.752);
   height: 100vh;
   left: 0;
   position: fixed;

@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/TienditaLV/CSS/styleAdmin.css">
     <title>Tiendita LV</title>
 </head>
@@ -29,8 +30,8 @@
     <li class="menu-item">
       <a>Productos</a>
       <ol class="sub-menu">
-        <li class="menu-item"><a href="../Panel/views/Porductos/">Lista de productos</a></li>
-        <li class="menu-item"><a href="#0">Lista de proveedores</a></li>
+        <li class="menu-item" id="linkMenu"><a href="../Panel/views/Porductos/">Lista de productos</a></li>
+        <li class="menu-item" id="linkMenu"><a href="#0">Lista de proveedores</a></li>
         <li class="menu-item"><a href="#0">Lista de marcas</a></li>
         <li class="menu-item"><a href="#0">Lista de categoria</a></li>
       </ol>
@@ -46,3 +47,5 @@
     <li class="menu-item"><a href="#0">Contact</a></li>
   </ol>
 </nav>
+<br/>
+<br/>

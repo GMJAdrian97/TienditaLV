@@ -1,11 +1,12 @@
 <?php require_once('../../../Componentes/headerAdmin.php'); ?>
+
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Lista de productos</h1>
+            <h1 style="margin-left:35%">Lista de productos</h1>
         </div>
     </div>
-    <a href="ctrlProducto.php?accion=new" class="btn btn-primary"> Añadir nuevo producto</a>
+    <a href="ctrlProducto.php?accion=new" class="btn btn-primary" style="margin-left:40%"> Añadir nuevo producto</a>
     <div class="row">
         <table class="table">
             <thead class="thead-dark">
