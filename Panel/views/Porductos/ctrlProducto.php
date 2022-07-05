@@ -9,6 +9,10 @@
     }
 
     switch($accion){
+        case 'new':
+            require_once('formProduct.php');
+            break;
+
 
         default:
             $datosProducto = $producto->read();

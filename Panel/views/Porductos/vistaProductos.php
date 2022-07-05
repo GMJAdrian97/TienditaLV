@@ -8,6 +8,7 @@
     </div>
     <a href="ctrlProducto.php?accion=new" class="btn btn-primary" style="margin-left:40%"> Añadir nuevo producto</a>
     <div class="row">
+        <div class="tablePrincipal" style="justify-content: center">
         <table class="table">
             <thead class="thead-dark">
                 <tr>
@@ -55,11 +56,10 @@
                     <td><?php echo $producto['proveedor']; ?></td>
                     <td>
                         <div>
-                            <i class="btn btn-info bi-pencil"><a
-                                    href="ctrlProducto.php?accion=modify&id_producto=<?php echo $producto['id_producto']; ?>">Modificar</a></i>
-                            <i class="btn btn-secondary bi bi-trash"><a
-                                    href="ctrlProducto.php?accion=delete&id_producto=<?php echo $producto['id_producto']; ?>">Eliminar</a></i>
-                        </div>
+                        <a href="ctrlProducto.php?accion=modify&id_producto=<?php echo $producto['id_producto']; ?>"><i
+                                        class="bi bi-pencil"></i></a>
+                        <a href="ctrlProducto.php?accion=delete&id_producto=<?php echo $producto['id_producto']; ?>"><i
+                                        class="bi bi-trash"></i></a></div>
                     </td>
                 </tr>
 
@@ -67,7 +67,48 @@
                 endforeach;
             ?>
             </tbody>
-        </table>
+        </table></div>
     </div>
+    <!-- Pagina para pantallas pequeñas -->
+    <div class="row">
+        <div class="tableMobiles" style="justify-content: center">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr style=" text-align: center">
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Costo</th>
+                        <th scope="col">Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <?php foreach ($datosProducto as $key => $producto):?>
+                    <tr style=" text-align: center">
+                        <td><?php echo $producto['nombre']; ?></td>
+                        <td><?php echo $producto['precio']; ?></td>
+                        <td><?php echo $producto['stock']; ?></td>
+                        <td><?php echo $producto['costo']; ?></td>
+                        <td>
+                            <div>
+                                <a
+                                    href="ctrlProducto.php?accion=modify&id_producto=<?php echo $producto['id_producto']; ?>"><i
+                                        class="bi bi-pencil"></i></a>
+                                <a
+                                    href="ctrlProducto.php?accion=delete&id_producto=<?php echo $producto['id_producto']; ?>"><i
+                                        class="bi bi-trash"></i></a>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <?php
+                endforeach;
+            ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- Pagina para pantallas pequeñas -->
 </div>
 <?php require_once('../../../Componentes/footer.php'); ?>

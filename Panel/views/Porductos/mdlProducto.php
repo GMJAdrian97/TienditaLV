@@ -164,6 +164,35 @@
             $datosProducto = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $datosProducto;
         }
+        public function insert(){
+            $this->connect();
+            $archivo = $this->cargarImagen("imagen", "../../../Images/");
+                if(is_null($archivo)){
+            $sql="INSERT INTO producto(nombre,medida,precio,stock,costo,descripcion,qr,id_marca,id_categoria,id_proveedor)
+            values(:nombre,:medida,:precio,:stock,:costo,:descripcion,:qr,:id_marca,:id_categoria,:id_proveedor)";
+            } else{
+                $sql="INSERT INTO producto(nombre,imagen,medida,precio,stock,costo,descripcion,qr,id_marca,id_categoria,id_proveedor)
+                values(:nombre,:imagen,:medida,:precio,:stock,:costo,:descripcion,:qr,:id_marca,:id_categoria,:id_proveedor)";
+            
+                $stmt = $this->con->prepare($sql);
+                $stmt -> bindParam(':nombre', $datosProducto['nombre'], PDO::PARAM_STR);
+                $stmt -> bindParam(':medida', $datosProducto['medida'], PDO::PARAM_STR);
+                $stmt -> bindParam(':precio', $datosProducto['precio'], PDO::PARAM_STR);
+                $stmt -> bindParam(':stock', $datosProducto['stock'], PDO::PARAM_INT);
+                $stmt -> bindParam(':costo', $datosProducto['costo'], PDO::PARAM_STR);
+                $stmt -> bindParam(':descripcion', $datosProducto['descripcion'], PDO::PARAM_STR);
+                $stmt -> bindParam(':qr', $datosProducto['qr'], PDO::PARAM_STR);
+                $stmt -> bindParam(':id_marca', $datosProducto['id_marca'], PDO::PARAM_INT);
+                $stmt -> bindParam(':id_categoria', $datosProducto['id_categoria'], PDO::PARAM_INT);
+                $stmt -> bindParam(':id_proveedor', $datosProducto['id_proveedor'], PDO::PARAM_INT);
+                if(!is_null($archivo)){
+                    $stmt -> bindParam(':imagen', $archivo, PDO::PARAM_STR);
+                }
+                
+                $rs = $stmt->execute();
+                return  $stmt->rowCount();;
+            }
+        }
     }
 
     $producto = new Producto;
