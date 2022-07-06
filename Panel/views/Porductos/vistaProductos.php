@@ -3,10 +3,10 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1 style="margin-left:35%">Lista de productos</h1>
+            <h1>Lista de productos</h1>
         </div>
     </div>
-    <a href="ctrlProducto.php?accion=new" class="btn btn-primary" style="margin-left:40%"> Añadir nuevo producto</a>
+    <center><a href="ctrlProducto.php?accion=new" class="btn btn-primary"> Añadir nuevo producto</a></center>   
     <div class="row">
         <div class="tablePrincipal" style="justify-content: center">
         <table class="table">
@@ -30,13 +30,13 @@
             <tbody>
 
                 <?php foreach ($datosProducto as $key => $producto):?>
-                <tr>
+                <tr style=" text-align: center">
                     <th scope="row"><?php echo $producto['id_producto']; ?></th>
                     
                     <td><?php echo $producto['nombre']; ?></td>
                     <td>
                         <div class="text-center">
-                            <img src="../../image/imagProduc/<?php echo $producto['imagen']; ?>" class="img-circle"
+                            <img src="../../../Images/<?php echo $producto['imagen']; ?>" class="img-circle"
                                 width="200" alt="suple">
                         </div>
                     </td>
@@ -47,7 +47,7 @@
                     <td><?php echo $producto['descripcion']; ?></td>
                     <td>
                         <div class="text-center">
-                            <img src="../../image/imagProduc/<?php echo $producto['qr']; ?>" class="img-circle"
+                            <img src="../../../Images/<?php echo $producto['qr']; ?>" class="img-circle"
                                 width="200" alt="suple">
                         </div>
                     </td>
