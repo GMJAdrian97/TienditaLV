@@ -20,7 +20,7 @@
                     <th scope="col">Stock</th>
                     <th scope="col">Costo</th>
                     <th scope="col">Descripcion</th>
-                    <th scope="col">QR</th>
+                
                     <th scope="col">Marca</th>
                     <th scope="col">Categoria</th>
                     <th scope="col">Proveedor</th>
@@ -45,12 +45,7 @@
                     <td><?php echo $producto['stock']; ?></td>
                     <td><?php echo $producto['costo']; ?></td>
                     <td><?php echo $producto['descripcion']; ?></td>
-                    <td>
-                        <div class="text-center">
-                            <img src="../../../Images/<?php echo $producto['qr']; ?>" class="img-circle"
-                                width="200" alt="suple">
-                        </div>
-                    </td>
+                    
                     <td><?php echo $producto['marca']; ?></td>
                     <td><?php echo $producto['categoria']; ?></td>
                     <td><?php echo $producto['proveedor']; ?></td>
