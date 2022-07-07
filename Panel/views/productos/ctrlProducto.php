@@ -30,6 +30,7 @@
             $datosProducto = $producto->read();
             require_once('vistaProductos.php');
             break;
+            
         case 'modify':
             $datosProducto = $producto->readOne($id_producto);
             $datosMarca = $marca->read();

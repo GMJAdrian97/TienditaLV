@@ -52,26 +52,6 @@
         }
 
         /**
-         * Get the value of imagen
-         */ 
-        public function getImagen()
-        {
-                return $this->imagen;
-        }
-
-        /**
-         * Set the value of imagen
-         *
-         * @return  self
-         */ 
-        public function setImagen($imagen)
-        {
-                $this->imagen = $imagen;
-
-                return $this;
-        }
-
-        /**
          * Get the value of descripcion
          */ 
         public function getDescripcion()
@@ -135,6 +115,19 @@
 
            /* Metodos CRUD */
 
+           public function readOne($id_categoria){
+                $this->connect();
+                $sql = "SELECT *
+                        FROM categoria
+                        WHERE id_categoria=:id_categoria;";
+                $stmt = $this->con->prepare($sql);
+                $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+            $stmt->execute();
+            $datosCategoria = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $datosCategoria = (isset($datosCategoria[0])) ? $datosCategoria[0] : null;
+            return $datosCategoria;
+            }
+
            public function read(){
             $this->connect();
             $sql = "SELECT *
@@ -145,6 +138,39 @@
             $datosProve = $stmt->fetchAll(PDO::FETCH_ASSOC);
             return $datosProve;
         }
+
+        public function insert($datosFormulario){
+                $this->connect();
+                $sql="INSERT INTO categoria(nombre)
+                        values(:nombre)";
+                    $stmt = $this->con->prepare($sql);
+                    $stmt -> bindParam(':nombre', $datosFormulario['nombre'], PDO::PARAM_STR);
+                    $rs = $stmt->execute();
+                    return  $stmt->rowCount();;
+                }
+
+
+        public function delete($id_categoria){
+                $this->connect();
+                $sql = "DELETE FROM categoria WHERE id_categoria=:id_categoria";
+                $stmt = $this->con->prepare($sql);
+                $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+                $rs = $stmt->execute();
+                return $stmt->rowCount();
+        }
+
+
+        public function update($datosCategoria, $id_categoria){
+                $this->connect();
+                $sql = "UPDATE categoria set
+                               nombre=:nombre
+                        WHERE id_categoria = :id_categoria";
+                    $stmt = $this->con->prepare($sql);
+                    $stmt->bindParam(':nombre', $datosCategoria['nombre'], PDO::PARAM_STR);
+                    $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+            $rs = $stmt->execute();
+            return $stmt->rowCount();
+            }
     }
 
     $proveedor = new Proveedor;
