@@ -14,19 +14,27 @@
         enctype="multipart/form-data">
         <div class="name">
             <label for="name"></label>
-            <input type="text" value="<?php echo(isset($id_proveedor)) ? $datosProducto['nombre']:"";?>"
+            <input type="text" value="<?php echo(isset($id_proveedor)) ? $datosProveedor['nombre']:"";?>"
                 placeholder="Nombre" name="nombre" id="name_input" required>
         </div>
+
         <div class="email">
-            <label for="stock"></label>
-            <input type="numeric" value="<?php echo(isset($id_proveedor)) ? $datosProducto['telefono']:"";?>"
-                placeholder="Stock" name="stock" id="email_input" required>
+            <label for="name"></label>
+            <input type="text" value="<?php echo(isset($id_proveedor)) ? $datosProveedor['decripcion']:"";?>"
+                placeholder="Descripcion" name="decripcion" id="name_input" required>
         </div>
+
         <div class="name">
-            <label for="costo"></label>
-            <input type="text" value="<?php echo(isset($id_proveedor)) ? $datosProducto['direccion']:"";?>"
-                placeholder="Costo" name="costo" id="name_input" required>
+            <label for="telefono"></label>
+            <input type="numeric" value="<?php echo(isset($id_proveedor)) ? $datosProveedor['telefono']:"";?>"
+                placeholder="Telefono" name="telefono" id="email_input" required>
         </div>
+        <div class="email">
+            <label for="direccion"></label>
+            <input type="text" value="<?php echo(isset($id_proveedor)) ? $datosProveedor['direccion']:"";?>"
+                placeholder="Direccion" name="direccion" id="name_input" required>
+        </div>
+
         <div class="submit">
             <input type="submit" value="Guardar" id="form_button" />
         </div>

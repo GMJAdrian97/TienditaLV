@@ -27,22 +27,21 @@
     </svg>
   </label>
   <ol class='menu__content'>
-    <li class="menu-item"><a href="#0">Home</a></li>
+    <li class="menu-item"><a href="../admin/home.php">Home</a></li>
     <li class="menu-item">
       <a>Productos</a>
       <ol class="sub-menu">
         <li class="menu-item"><a href="../productos/ctrlProducto.php">Lista de productos</a></li>
         <li class="menu-item"><a href="../proveedor/ctrlProveedor.php">Lista de proveedores</a></li>
-        <li class="menu-item"><a href="../productos/ctrlMarca.php">Lista de marcas</a></li>
+        <li class="menu-item"><a href="../marca/ctrlMarca.php">Lista de marcas</a></li>
         <li class="menu-item"><a href="../categoria/ctrlCategoria.php">Lista de categoria</a></li>
       </ol>
     </li>
     <li class="menu-item">
-      <a href="#0">Kabobs</a>
+      <a>Usuarios</a>
       <ol class="sub-menu">
-        <li class="menu-item"><a href="#0">Shishkabobs</a></li>
-        <li class="menu-item"><a href="#0">BBQ kabobs</a></li>
-        <li class="menu-item"><a href="#0">Summer kabobs</a></li>
+        <li class="menu-item"><a href="#0">Usuarios</a></li>
+        <li class="menu-item"><a href="#0">Roles</a></li>
       </ol>
     </li>
     <li class="menu-item"><a href="#0">Contact</a></li>

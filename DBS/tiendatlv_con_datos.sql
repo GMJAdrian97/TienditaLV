@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2022 a las 02:22:19
+-- Tiempo de generación: 14-07-2022 a las 02:00:15
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -37,7 +37,9 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id_categoria`, `nombre`) VALUES
-(1, 'Refresco');
+(1, 'Refresco'),
+(2, 'botana'),
+(4, 'Golosinas');
 
 -- --------------------------------------------------------
 
@@ -85,16 +87,17 @@ CREATE TABLE `detalle_venta` (
 
 CREATE TABLE `marca` (
   `id_marca` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `imagen` varchar(100) DEFAULT NULL
+  `nombre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `marca`
 --
 
-INSERT INTO `marca` (`id_marca`, `nombre`, `imagen`) VALUES
-(1, 'Coca-Cola', 'cocalogo.png');
+INSERT INTO `marca` (`id_marca`, `nombre`) VALUES
+(1, 'Coca-Cola'),
+(2, 'Pepsi'),
+(4, 'Ricolino');
 
 -- --------------------------------------------------------
 
@@ -105,13 +108,12 @@ INSERT INTO `marca` (`id_marca`, `nombre`, `imagen`) VALUES
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `imagen` varchar(100) DEFAULT NULL,
+  `imagen` varchar(100) DEFAULT 'noProdu.png',
   `medida` varchar(20) DEFAULT NULL,
   `precio` float DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
   `costo` float DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `qr` varchar(100) NOT NULL,
   `id_marca` int(11) DEFAULT NULL,
   `id_categoria` int(11) DEFAULT NULL,
   `id_proveedor` int(11) DEFAULT NULL
@@ -121,9 +123,13 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `nombre`, `imagen`, `medida`, `precio`, `stock`, `costo`, `descripcion`, `qr`, `id_marca`, `id_categoria`, `id_proveedor`) VALUES
-(1, 'Coca-Cola', 'coca.jpg', '600ml', 16, 20, 14.5, 'Refresco sabor cola de 600ml', 'qrcoca.jpg', 1, 1, 1),
-(2, 'Sidral Mundet sabor Fresa-Kiwi', 'SMFK.jpg', '2L', 25, 10, 22.5, 'Sidral de 2L sabor fresa con Kiwi', 'qrSMFK.jpg', 1, 1, 1);
+INSERT INTO `producto` (`id_producto`, `nombre`, `imagen`, `medida`, `precio`, `stock`, `costo`, `descripcion`, `id_marca`, `id_categoria`, `id_proveedor`) VALUES
+(1, 'Coca-Cola', 'coca.jpg', '600ml', 16, 20, 14.5, 'Refresco sabor cola de 600ml', 1, 1, 1),
+(2, 'Sidral Mundet sabor Fresa-Kiwi', '9e098e0faf3d3c9b13aa6dfa01ccdd63.png', '2L', 25, 10, 22.5, 'Sidral de 2L sabor fresa con Kiwi', 1, 1, 1),
+(6, NULL, 'a42d660197d7491cb647616188d56471.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, NULL, 'noProdu.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'chetoos', 'df5c118f14142e780bfc85fc9cb34ddb.png', '200grs', 11, 12, 9, 'chetoos con queso torciditos', 2, 2, 2),
+(9, 'Bubulubu', 'f98a912b8d74a25085bf4a24b329a0f6.png', '1pz', 10, 10, 8, 'Chocolate relleno de bombon y fresa', 4, 4, 6);
 
 -- --------------------------------------------------------
 
@@ -134,7 +140,6 @@ INSERT INTO `producto` (`id_producto`, `nombre`, `imagen`, `medida`, `precio`, `
 CREATE TABLE `proveedor` (
   `id_proveedor` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `imagen` varchar(100) DEFAULT NULL,
   `decripcion` varchar(50) DEFAULT NULL,
   `telefono` int(11) DEFAULT NULL,
   `direccion` varchar(50) DEFAULT NULL
@@ -144,8 +149,10 @@ CREATE TABLE `proveedor` (
 -- Volcado de datos para la tabla `proveedor`
 --
 
-INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `imagen`, `decripcion`, `telefono`, `direccion`) VALUES
-(1, 'Coca-Cola', 'cocalogo.png', 'Surtidor de la coca-cola', 18003223, 'Mexico');
+INSERT INTO `proveedor` (`id_proveedor`, `nombre`, `decripcion`, `telefono`, `direccion`) VALUES
+(1, 'Coca-Cola', 'Surtidor de la coca-cola', 18003223, 'Mexico'),
+(2, 'Pepsi', 'refresquera gigante', 12557413, 'guadalajara'),
+(6, 'Ricolino', 'dulceria ricolino', 417, 'Mexico');
 
 -- --------------------------------------------------------
 
@@ -280,7 +287,7 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `compra_provee`
@@ -292,19 +299,19 @@ ALTER TABLE `compra_provee`
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_marca` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `rol`

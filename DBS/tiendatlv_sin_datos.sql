@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2022 a las 02:21:52
+-- Tiempo de generación: 14-07-2022 a las 02:01:32
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -78,8 +78,7 @@ CREATE TABLE `detalle_venta` (
 
 CREATE TABLE `marca` (
   `id_marca` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
-  `imagen` varchar(100) DEFAULT NULL
+  `nombre` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -91,13 +90,12 @@ CREATE TABLE `marca` (
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `imagen` varchar(100) DEFAULT NULL,
+  `imagen` varchar(100) DEFAULT 'noProdu.png',
   `medida` varchar(20) DEFAULT NULL,
   `precio` float DEFAULT NULL,
   `stock` int(11) DEFAULT NULL,
   `costo` float DEFAULT NULL,
   `descripcion` varchar(100) DEFAULT NULL,
-  `qr` varchar(100) NOT NULL,
   `id_marca` int(11) DEFAULT NULL,
   `id_categoria` int(11) DEFAULT NULL,
   `id_proveedor` int(11) DEFAULT NULL
@@ -112,7 +110,6 @@ CREATE TABLE `producto` (
 CREATE TABLE `proveedor` (
   `id_proveedor` int(11) NOT NULL,
   `nombre` varchar(50) DEFAULT NULL,
-  `imagen` varchar(100) DEFAULT NULL,
   `decripcion` varchar(50) DEFAULT NULL,
   `telefono` int(11) DEFAULT NULL,
   `direccion` varchar(50) DEFAULT NULL

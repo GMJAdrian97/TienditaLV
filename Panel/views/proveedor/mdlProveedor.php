@@ -115,17 +115,17 @@
 
            /* Metodos CRUD */
 
-           public function readOne($id_categoria){
+           public function readOne($id_proveedor){
                 $this->connect();
                 $sql = "SELECT *
-                        FROM categoria
-                        WHERE id_categoria=:id_categoria;";
+                        FROM proveedor
+                        WHERE id_proveedor=:id_proveedor;";
                 $stmt = $this->con->prepare($sql);
-                $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+                $stmt->bindParam(':id_proveedor', $id_proveedor, PDO::PARAM_INT);
             $stmt->execute();
-            $datosCategoria = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            $datosCategoria = (isset($datosCategoria[0])) ? $datosCategoria[0] : null;
-            return $datosCategoria;
+            $datosProveedor = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $datosProveedor = (isset($datosProveedor[0])) ? $datosProveedor[0] : null;
+            return $datosProveedor;
             }
 
            public function read(){
@@ -141,33 +141,42 @@
 
         public function insert($datosFormulario){
                 $this->connect();
-                $sql="INSERT INTO categoria(nombre)
-                        values(:nombre)";
+                $sql="INSERT INTO proveedor(nombre, decripcion, telefono, direccion)
+                        values(:nombre, :decripcion, :telefono, :direccion)";
                     $stmt = $this->con->prepare($sql);
                     $stmt -> bindParam(':nombre', $datosFormulario['nombre'], PDO::PARAM_STR);
+                    $stmt -> bindParam(':decripcion', $datosFormulario['decripcion'], PDO::PARAM_STR);
+                    $stmt -> bindParam(':telefono', $datosFormulario['telefono'], PDO::PARAM_INT);
+                    $stmt -> bindParam(':direccion', $datosFormulario['direccion'], PDO::PARAM_STR);
                     $rs = $stmt->execute();
                     return  $stmt->rowCount();;
                 }
 
 
-        public function delete($id_categoria){
+        public function delete($id_proveedor){
                 $this->connect();
-                $sql = "DELETE FROM categoria WHERE id_categoria=:id_categoria";
+                $sql = "DELETE FROM proveedor WHERE id_proveedor=:id_proveedor";
                 $stmt = $this->con->prepare($sql);
-                $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+                $stmt->bindParam(':id_proveedor', $id_proveedor, PDO::PARAM_INT);
                 $rs = $stmt->execute();
                 return $stmt->rowCount();
         }
 
 
-        public function update($datosCategoria, $id_categoria){
+        public function update($datosProveedor, $id_proveedor){
                 $this->connect();
-                $sql = "UPDATE categoria set
-                               nombre=:nombre
-                        WHERE id_categoria = :id_categoria";
+                $sql = "UPDATE proveedor set
+                               nombre=:nombre,
+                               decripcion=:decripcion, 
+                               telefono=:telefono, 
+                               direccion=:direccion
+                        WHERE id_proveedor = :id_proveedor";
                     $stmt = $this->con->prepare($sql);
-                    $stmt->bindParam(':nombre', $datosCategoria['nombre'], PDO::PARAM_STR);
-                    $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+                    $stmt -> bindParam(':nombre', $datosProveedor['nombre'], PDO::PARAM_STR);
+                    $stmt -> bindParam(':decripcion', $datosProveedor['decripcion'], PDO::PARAM_STR);
+                    $stmt -> bindParam(':telefono', $datosProveedor['telefono'], PDO::PARAM_INT);
+                    $stmt -> bindParam(':direccion', $datosProveedor['direccion'], PDO::PARAM_STR);
+                    $stmt->bindParam(':id_proveedor', $id_proveedor, PDO::PARAM_INT);
             $rs = $stmt->execute();
             return $stmt->rowCount();
             }
