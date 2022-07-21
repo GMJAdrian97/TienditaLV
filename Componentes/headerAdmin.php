@@ -40,8 +40,8 @@
     <li class="menu-item">
       <a>Usuarios</a>
       <ol class="sub-menu">
-        <li class="menu-item"><a href="#0">Usuarios</a></li>
-        <li class="menu-item"><a href="#0">Roles</a></li>
+        <li class="menu-item"><a href="../usuario/ctrlUsuario.php">Usuarios</a></li>
+        <li class="menu-item"><a href="../roles/ctrlRoles.php">Roles</a></li>
       </ol>
     </li>
     <li class="menu-item"><a href="#0">Contact</a></li>
