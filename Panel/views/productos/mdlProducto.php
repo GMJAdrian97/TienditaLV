@@ -170,7 +170,7 @@
                             p.stock,
                             p.costo,
                             p.descripcion,
-                       
+                            p.qr,
                             (m.nombre) as marca,
                             (c.nombre) as categoria,
                             (pr.nombre) as proveedor
@@ -250,9 +250,28 @@
 
         public function insert($datosFormulario){
             $this->connect();
+            require_once '../../../CodigoQR/phpqrcode/qrlib.php';
+            // Bariable con la unicacion de la carpeta para guarda los codigo qr 
+            $dir = '../../../Images/qr/';
+
+            // Si la carpeta qr no existe la crea 
+            if (!file_exists($dir)) {
+                mkdir($dir);
+            }
+
+            $filename = $dir.'qr_'.$datosFormulario['nombre'].'.png';
+            $nombreQR = 'qr_'.$datosFormulario['nombre'].'.png';
+            $tamanio = 10;
+            $level = 'H';
+            $frameSize = 3;
+            $contenido = $datosFormulario['nombre'];
+
+            QRcode::png($contenido, $filename, $level, $tamanio, $frameSize);
+            $archivoQR = $nombreQR;
             $archivo = $this->cargarImagen("imagen", "../../../Images/");
             if(is_null($archivo)){
                 $sql="INSERT INTO producto(nombre,
+                                    qr,
                                     medida,
                                     precio,
                                     stock,
@@ -262,6 +281,7 @@
                                     id_categoria,
                                     id_proveedor)
                                     values(:nombre,
+                                    :qr,
                                     :medida,
                                     :precio,
                                     :stock,
@@ -272,6 +292,7 @@
                                     :id_proveedor)";
             } else{
                     $sql="INSERT INTO producto(nombre,
+                    qr,
                     imagen,
                     medida,
                     precio,
@@ -282,6 +303,7 @@
                     id_categoria,
                     id_proveedor)
                       values(:nombre,
+                      :qr,
                       :imagen,
                       :medida,
                       :precio,
@@ -299,7 +321,7 @@
                 $stmt -> bindParam(':stock', $datosFormulario['stock'], PDO::PARAM_INT);
                 $stmt -> bindParam(':costo', $datosFormulario['costo'], PDO::PARAM_STR);
                 $stmt -> bindParam(':descripcion', $datosFormulario['descripcion'], PDO::PARAM_STR);
-               
+                $stmt -> bindParam(':qr', $archivoQR, PDO::PARAM_STR);
                 $stmt -> bindParam(':id_marca', $datosFormulario['id_marca'], PDO::PARAM_INT);
                 $stmt -> bindParam(':id_categoria', $datosFormulario['id_categoria'], PDO::PARAM_INT);
                 $stmt -> bindParam(':id_proveedor', $datosFormulario['id_proveedor'], PDO::PARAM_INT);

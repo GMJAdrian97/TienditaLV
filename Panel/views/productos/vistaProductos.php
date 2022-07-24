@@ -14,6 +14,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
+                    <th scope="col">qr</th>
                     <th scope="col">Imagen</th>
                     <th scope="col">Medida</th>
                     <th scope="col">Precio</th>
@@ -34,6 +35,12 @@
                     <th scope="row"><?php echo $producto['id_producto']; ?></th>
                     
                     <td><?php echo $producto['nombre']; ?></td>
+                    <td>
+                        <div class="text-center">
+                            <img src="../../../Images/qr/<?php echo $producto['qr']; ?>" class="img-circle"
+                                width="200" alt="suple">
+                        </div>
+                    </td>
                     <td>
                         <div class="text-center">
                             <img src="../../../Images/<?php echo $producto['imagen']; ?>" class="img-circle"
