@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-07-2022 a las 02:00:15
+-- Tiempo de generación: 26-07-2022 a las 02:17:01
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 7.4.29
 
@@ -107,6 +107,7 @@ INSERT INTO `marca` (`id_marca`, `nombre`) VALUES
 
 CREATE TABLE `producto` (
   `id_producto` int(11) NOT NULL,
+  `qr` varchar(100) DEFAULT NULL,
   `nombre` varchar(50) DEFAULT NULL,
   `imagen` varchar(100) DEFAULT 'noProdu.png',
   `medida` varchar(20) DEFAULT NULL,
@@ -123,13 +124,16 @@ CREATE TABLE `producto` (
 -- Volcado de datos para la tabla `producto`
 --
 
-INSERT INTO `producto` (`id_producto`, `nombre`, `imagen`, `medida`, `precio`, `stock`, `costo`, `descripcion`, `id_marca`, `id_categoria`, `id_proveedor`) VALUES
-(1, 'Coca-Cola', 'coca.jpg', '600ml', 16, 20, 14.5, 'Refresco sabor cola de 600ml', 1, 1, 1),
-(2, 'Sidral Mundet sabor Fresa-Kiwi', '9e098e0faf3d3c9b13aa6dfa01ccdd63.png', '2L', 25, 10, 22.5, 'Sidral de 2L sabor fresa con Kiwi', 1, 1, 1),
-(6, NULL, 'a42d660197d7491cb647616188d56471.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(7, NULL, 'noProdu.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(8, 'chetoos', 'df5c118f14142e780bfc85fc9cb34ddb.png', '200grs', 11, 12, 9, 'chetoos con queso torciditos', 2, 2, 2),
-(9, 'Bubulubu', 'f98a912b8d74a25085bf4a24b329a0f6.png', '1pz', 10, 10, 8, 'Chocolate relleno de bombon y fresa', 4, 4, 6);
+INSERT INTO `producto` (`id_producto`, `qr`, `nombre`, `imagen`, `medida`, `precio`, `stock`, `costo`, `descripcion`, `id_marca`, `id_categoria`, `id_proveedor`) VALUES
+(1, NULL, 'Coca-Cola', 'coca.jpg', '600ml', 16, 20, 14.5, 'Refresco sabor cola de 600ml', 1, 1, 1),
+(2, NULL, 'Sidral Mundet sabor Fresa-Kiwi', '9e098e0faf3d3c9b13aa6dfa01ccdd63.png', '2L', 25, 10, 22.5, 'Sidral de 2L sabor fresa con Kiwi', 1, 1, 1),
+(6, NULL, NULL, 'a42d660197d7491cb647616188d56471.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, NULL, NULL, 'noProdu.png', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, NULL, 'chetoos', 'df5c118f14142e780bfc85fc9cb34ddb.png', '200grs', 11, 12, 9, 'chetoos con queso torciditos', 2, 2, 2),
+(9, NULL, 'Bubulubu', 'f98a912b8d74a25085bf4a24b329a0f6.png', '1pz', 10, 10, 8, 'Chocolate relleno de bombon y fresa', 4, 4, 6),
+(10, NULL, 'chetoos verdes', 'noProdu.png', '1pz', 10, 10, 8, '', 1, 2, 6),
+(11, NULL, 'chetoos verdes', 'noProdu.png', '1pz', 10, 10, 8, '', 1, 2, 6),
+(12, 'qr_chetoos verdes.png', 'chetoos verdes', 'noProdu.png', '1pz', 10, 10, 8, '', 1, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -305,7 +309,7 @@ ALTER TABLE `marca`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_producto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
