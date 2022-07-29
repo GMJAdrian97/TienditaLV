@@ -28,6 +28,7 @@
   </label>
   <ol class='menu__content'>
     <li class="menu-item"><a href="../admin/home.php">Home</a></li>
+    <li class="menu-item"><a href="../puntoVenta/ctrlPV.php">Punto de venta</a></li>
     <li class="menu-item">
       <a>Productos</a>
       <ol class="sub-menu">

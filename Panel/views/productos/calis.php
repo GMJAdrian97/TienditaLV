@@ -9,7 +9,7 @@
     <div class="row justify-content-center aling-items-center vh-100">
       <h1 style ="text-align: center;">Como Escanear QR </h1>
       <div class="col-lg-9">
-        <video id="previsualizacion" class= "p-1 border" style="width: 100%;"> </video></video>
+        <video id="previsualizacion" class= "p-1 border" style="width: 100%;"> </video>
       </div>
     </div>
    </div>
